@@ -48,7 +48,7 @@ public class DemoController {
 		
 		RootResponse<List<String>> rootResponse = new RootResponse<>();
 		rootResponse.setCode(200);
-		rootResponse.setMessage("Deployed with Jenkins | ping routing payment confirmation from jonas api was successful.");
+		rootResponse.setMessage("Deployed with Jenkins :) | ping routing payment confirmation from jonas api was successful.");
 		rootResponse.setResponse(Arrays.asList(UUID.randomUUID().toString(),
 				UUID.randomUUID().toString(),
 				UUID.randomUUID().toString(), UUID.randomUUID().toString()));
