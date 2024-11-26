@@ -53,7 +53,7 @@ pipeline {
       echo '@@ remove old build'
       sh 'ssh  appuser@192.168.0.190 "rm -rf /home/appuser/apps/$NAME-$VERSION.war > /dev/null 2>&1 &"'
       echo '@@ copy new build'
-      sh 'scp ./target/$NAME-$VERSION.war appuser@192.168.0.190:/home/appuser/apps/'
+      sh 'scp ./target/$NAME.war appuser@192.168.0.190:/home/appuser/apps/'
       echo '@@ kill running java process @@'
      // sh("lsof -i | grep java > PID.txt && awk '{print \$2}' PID.txt | xargs kill -9")  
 
