@@ -51,7 +51,7 @@ pipeline {
        sh 'echo ${PID}' // :(
       echo 'delivering app for deployment.'
       echo '@@ remove old build'
-      sh 'ssh  appuser@192.168.0.190 "rm -rf /home/appuser/apps/$NAME-$VERSION.war > /dev/null 2>&1 &"'
+      sh 'ssh  appuser@192.168.0.190 "rm -rf /home/appuser/apps/$NAME.war > /dev/null 2>&1 &"'
       echo '@@ copy new build'
       sh 'scp ./target/$NAME.war appuser@192.168.0.190:/home/appuser/apps/'
       echo '@@ kill running java process @@'
@@ -69,7 +69,7 @@ pipeline {
       // .
       sh 'ssh  appuser@192.168.0.190 "lsof -i:8085 | grep java > PID.txt && awk ${PRINT} PID.txt | xargs kill -9 > /dev/null 2>&1 &"'
       echo '@@ starting java app @@'
-      sh 'ssh  appuser@192.168.0.190 "nohup java -jar /home/appuser/apps/$NAME-$VERSION.war > /dev/null 2>&1 &"'
+      sh 'ssh  appuser@192.168.0.190 "nohup java -jar /home/appuser/apps/$NAME.war > /dev/null 2>&1 &"'
    }
    
    
