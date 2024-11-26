@@ -67,7 +67,7 @@ pipeline {
       // here.
       // && awk \'{print \'$2\'}\' PID.txt | xargs kill -9
       // .
-      sh 'ssh  appuser@192.168.0.190 "lsof -i:8082 | grep java > PID.txt && awk ${PRINT} PID.txt | xargs kill -9 > /dev/null 2>&1 &"'
+      sh 'ssh  appuser@192.168.0.190 "lsof -i:8085 | grep java > PID.txt && awk ${PRINT} PID.txt | xargs kill -9 > /dev/null 2>&1 &"'
       echo '@@ starting java app @@'
       sh 'ssh  appuser@192.168.0.190 "nohup java -jar /home/appuser/apps/$NAME-$VERSION.war > /dev/null 2>&1 &"'
    }
